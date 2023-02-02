@@ -1,5 +1,7 @@
 package com.codecool.marsexploration;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -18,7 +20,7 @@ public class MapGenerator {
         this.map = new char[config.getMapWidth()][config.getMapWidth()];
     }
 
-    public void generateMap() {
+    public char[][] generateMap() {
         for (int i = 0; i < config.getMapWidth(); i++) {
             for (int j = 0; j < config.getMapWidth(); j++) {
                 map[i][j] = ' ';
@@ -64,9 +66,27 @@ public class MapGenerator {
 
             map[waterResourceX][waterResourceY] = '~';
         }
+        return map;
     }
+
+    public void saveMapToFile(String filePath) {
+        try {
+            FileWriter writer = new FileWriter(filePath);
+            for (char[] row : map) {
+                for (char cell : row) {
+                    writer.write(cell);
+                }
+                writer.write(System.lineSeparator());
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.err.println("An error occurred while writing to file: " + e.getMessage());
+        }
+    }
+    // ...
 
     public char[][] getMap() {
         return map;
     }
+
 }
