@@ -83,7 +83,7 @@ public class MapGenerator {
             System.err.println("An error occurred while writing to file: " + e.getMessage());
         }
     }
-    // ...
+
 
     public char[][] getMap() {
         return map;

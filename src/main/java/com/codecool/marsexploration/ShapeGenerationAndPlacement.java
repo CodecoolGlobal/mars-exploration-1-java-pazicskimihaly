@@ -7,14 +7,13 @@ public class ShapeGenerationAndPlacement {
     static char[][] generateMap(List<Integer> mountainAreas, List<Integer> pitAreas, int mapWidth) {
         Random random = new Random();
 
-        // Generate the shape of each mountain
         List<char[][]> mountains = new ArrayList<>();
         for (int area : mountainAreas) {
             int rows = (int) Math.sqrt(area);
             int columns = (int) Math.ceil(area / (double) rows);
 
             char[][] mountain = new char[rows][columns];
-            // Fill the mountain with '^'
+
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
                     mountain[i][j] = '^';
@@ -24,14 +23,14 @@ public class ShapeGenerationAndPlacement {
             mountains.add(mountain);
         }
 
-        // Generate the shape of each pit
+
         List<char[][]> pits = new ArrayList<>();
         for (int area : pitAreas) {
             int rows = (int) Math.sqrt(area);
             int columns = (int) Math.ceil(area / (double) rows);
 
             char[][] pit = new char[rows][columns];
-            // Fill the pit with '#'
+
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
                     pit[i][j] = '#';
